@@ -8,6 +8,11 @@ const Product = ({ product }: { product: Item }) => {
   const router = useRouter();
   const { params = [] } = router.query;
 
+  //for fallback:true
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div className="container">
       <div className="flex flex-col space-y-3">
@@ -21,26 +26,50 @@ const Product = ({ product }: { product: Item }) => {
 
 export default Product;
 
-export async function getServerSideProps(context: any) {
+// export async function getServerSideProps(context: any) {
+//   const { params, req, res } = context;
+//   const { productId } = params;
+
+//   const response = await ProductsAPI.getProduct(params.productId);
+//   console.log(response);
+//   return {
+//     props: {
+//       product: response,
+//     },
+//   };
+// }
+
+export async function getStaticProps(context: any) {
+  //run only on server-side
   const { params, req, res } = context;
   const { productId } = params;
 
-  const response = await ProductsAPI.getProduct(params.productId);
-  console.log(response);
+  const data = await ProductsAPI.getProduct(params.productId);
+  console.log(data);
+
+  //not found products - send not found status
+  if (!data.id) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      product: response,
+      product: data,
     },
+    //incremental static generation - revalidate duration
+    revalidate: 10,
   };
 }
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { productId: "1" } },
-//       { params: { productId: "2" } },
-//       { params: { productId: "3" } },
-//     ],
-//     fallback: "blocking",
-//   };
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { productId: "1" } },
+      { params: { productId: "2" } },
+      { params: { productId: "3" } },
+    ],
+    fallback: true,
+  };
+}
