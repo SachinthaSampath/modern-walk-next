@@ -12,12 +12,12 @@ export default function Category(): React.JSX.Element {
             <CategoryCard
               className="rounded-[15px] bg-mens p-[40px] text-center text-2xl font-bold text-white"
               name="Men's Clothing"
-              page="mens"
+              page="/category/mens"
             />
             <CategoryCard
               className="rounded-[15px] bg-womens p-[40px] text-center text-2xl font-bold text-white"
               name="Women's Clothing"
-              page="womens"
+              page="/category/womens"
             />
           </div>
         </div>
