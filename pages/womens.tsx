@@ -2,8 +2,8 @@
 
 import React from "react";
 
-import { ItemCard } from "@ui-core/components";
-import { SectionLayout } from "@ui-core/layouts";
+import { ItemCard } from "@/ui-core/components";
+import { SectionLayout } from "@/ui-core/layouts";
 
 import { Item } from "@/types";
 import { ProductsAPI } from "@/services";

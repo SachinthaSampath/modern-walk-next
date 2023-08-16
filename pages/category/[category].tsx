@@ -1,8 +1,8 @@
 import { ProductsAPI } from "@/services";
 import { Item } from "@/types";
 import React from "react";
-import { ItemCard } from "@ui-core/components";
-import { SectionLayout } from "@ui-core/layouts";
+import { ItemCard } from "@/ui-core/components";
+import { SectionLayout } from "@/ui-core/layouts";
 
 const Category = ({ items, title }: { items: Item[]; title: string }) => {
   return (

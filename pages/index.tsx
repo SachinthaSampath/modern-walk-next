@@ -4,8 +4,8 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import { FlashSale } from "@ui-core/templates";
-import { Category } from "@ui-core/templates";
+import { FlashSale } from "@/ui-core/templates";
+import { Category } from "@/ui-core/templates";
 import { useQuery } from "@tanstack/react-query";
 import { Item } from "types/Item";
 import { ProductsAPI } from "@/services";

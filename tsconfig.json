@@ -18,14 +18,14 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./*"],
-      "@ui-core/*": ["ui-core/*"],
-      "@components/*": ["ui-core/components/*"],
-      "@layout/*": ["ui-core/layout/*"],
-      "@template/*": ["ui-core/templates/*"],
-      "@lib/*": ["lib/*"],
-      "@types/*": ["types/*"],
-      "@context/*":["context/*"],
-      "@services/*":["./services/*"]
+      "@/ui-core/*": ["ui-core/*"],
+      "@/components/*": ["ui-core/components/*"],
+      "@/layout/*": ["ui-core/layout/*"],
+      "@/template/*": ["ui-core/templates/*"],
+      "@/lib/*": ["lib/*"],
+      "@/types/*": ["types/*"],
+      "@/context/*":["context/*"],
+      "@/services/*":["./services/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

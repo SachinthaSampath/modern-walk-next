@@ -22,6 +22,8 @@ export default function ItemCard({
   const { toast } = useToast();
 
   function addItemToCart(item: Item) {
+    console.log("adding item to cart ", item);
+
     let id = item.id;
     //get the cart from local storage
     let cartRow = localStorage.getItem("cart");

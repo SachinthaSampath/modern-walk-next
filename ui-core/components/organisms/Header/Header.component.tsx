@@ -25,6 +25,7 @@ import { ShoppingCartIcon } from "lucide-react";
 import { useToast } from "../../../../ui-core";
 import { Item } from "../../../../types";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function Header({
   headingText,
@@ -33,6 +34,7 @@ export default function Header({
 
   // const navigate = useNavigate();
   const { toast } = useToast();
+  const router = useRouter();
   return (
     <>
       <Menubar className="mt-0 h-12 w-full justify-end space-x-2 rounded-none border-0 bg-mwprimarynormal text-white">
@@ -48,6 +50,9 @@ export default function Header({
             </MenubarItem>
             <MenubarItem
               onClick={() => {
+                console.log(document.URL);
+                
+                return;
                 window.open(
                   document.URL,
                   "_blank",
@@ -198,7 +203,7 @@ export default function Header({
           <MenubarTrigger>
             {user.isLoggedIn ? (
               <>
-                <Image className="w-4 text-white lg:w-6" src="/user.png" alt="User icon" />
+                <Image className="w-4 text-white lg:w-6" src="/user.png" alt="User icon" width="24" height="24" />
                 &nbsp;{user?.name}
               </>
             ) : (

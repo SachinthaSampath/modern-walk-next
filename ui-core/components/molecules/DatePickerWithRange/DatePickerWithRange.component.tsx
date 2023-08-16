@@ -5,8 +5,8 @@ import { addDays, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
-import { cn } from "@lib/utils"
-import { Button } from "@components/atoms";
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/atoms";
 import { Calendar } from "../../..";
 import { Popover, PopoverContent, PopoverTrigger } from "../../..";
 
