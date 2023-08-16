@@ -157,11 +157,29 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
 
   return (
     <div className="flex h-screen  items-center">
+      
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto space-y-4 rounded-xl p-6 shadow-lg md:w-1/2 xl:w-1/3 "
         >
+          <p className="my-4 flex justify-center
+           space-x-[16px]">
+              <Button
+                variant={"link"}
+                type="button"
+                className="w-[200px]"
+                onClick={async () => {
+                  // const { user } = await signInWithGooglePopup();
+                  const { user } = await signInWithGooglePopup();
+                  console.log(user);
+                  const userDocRef = createUserDocumentFromAuth(user);
+                  console.log(userDocRef);
+                }}
+              >
+                SignUp with Google
+              </Button>
+            </p>
           <FormField
             control={form.control}
             name="name"
@@ -274,22 +292,7 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
               </Button>
             </p>
 
-            <p className="my-4 flex justify-end space-x-[16px]">
-              <Button
-                variant={"link"}
-                type="button"
-                className="w-[200px]"
-                onClick={async () => {
-                  // const { user } = await signInWithGooglePopup();
-                  const { user } = await signInWithGooglePopup();
-                  console.log(user);
-                  const userDocRef = createUserDocumentFromAuth(user);
-                  console.log(userDocRef);
-                }}
-              >
-                SignUp with Google
-              </Button>
-            </p>
+            
           </div>
         </form>
       </Form>
@@ -297,4 +300,7 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
   );
 };
 
+SignUpPage.getLayout=function PageLay(page:any) {
+  return <>{page}</>;
+};
 export default SignUpPage;

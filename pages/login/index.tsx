@@ -36,7 +36,7 @@ const loginSchema = z.object({
   remember: z.boolean().default(false).optional(),
 });
 
-const LoginPage: React.FC<LoginPageProps> = (): React.JSX.Element => {
+const LoginPage = (): React.JSX.Element => {
   const router = useRouter();
 
   //remove saved user from the local storage
@@ -234,6 +234,11 @@ const LoginPage: React.FC<LoginPageProps> = (): React.JSX.Element => {
       </div>
     </>
   );
+};
+
+//set custom layout for the login page. (Remove the common header in other pages).
+LoginPage.getLayout = function PageLayout(page:any) {
+  return <>{page}</>;
 };
 
 export default LoginPage;
