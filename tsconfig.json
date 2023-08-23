@@ -20,12 +20,13 @@
       "@/*": ["./*"],
       "@/ui-core/*": ["ui-core/*"],
       "@/components/*": ["ui-core/components/*"],
-      "@/layout/*": ["ui-core/layout/*"],
+      "@/layouts/*": ["ui-core/layouts/*"],
       "@/template/*": ["ui-core/templates/*"],
       "@/lib/*": ["lib/*"],
       "@/types/*": ["types/*"],
       "@/context/*":["context/*"],
-      "@/services/*":["./services/*"]
+      "@/services/*":["./services/*"],
+      "@/ui-components/*":["./components/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

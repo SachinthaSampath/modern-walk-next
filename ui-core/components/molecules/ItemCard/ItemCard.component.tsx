@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, H2 } from "../../../../ui-core";
-import { Item } from "../../../../types/Item";
+import { Button, H2 } from "@/ui-core";
+import { Item } from "@/types/Item";
 import { ItemCardProps } from "./ItemCard.types";
-import { useToast } from "../../../../ui-core";
+import { useToast } from "@/ui-core";
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../components/ui/card";
+} from "@/ui-components/ui/card";
 import Link from "next/link";
-import { useUserContext } from "../../../../contexts";
+import { useUserContext } from "@/contexts";
 
 export default function ItemCard({
   itemData,

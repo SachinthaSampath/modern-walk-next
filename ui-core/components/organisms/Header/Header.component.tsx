@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 
 import { H1 } from "../../atoms";
@@ -12,20 +13,17 @@ import {
   MenubarSeparator,
   MenubarShortcut,
   MenubarTrigger,
-  MenubarCheckboxItem,
-  MenubarRadioGroup,
-  MenubarRadioItem,
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
   CustomPopover,
   CustomDialog,
-} from "../../../../ui-core";
+} from "@/ui-core";
 import { ShoppingCartIcon } from "lucide-react";
-import { useToast } from "../../../../ui-core";
-import { Item } from "../../../../types";
+import { useToast } from "@/ui-core";
+import { Item } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Header({
   headingText,
@@ -41,17 +39,21 @@ export default function Header({
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem
-              onClick={() => {
-                window.open(process.env.REACT_APP_BASE_URL);
-              }}
-            >
-              New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+            <MenubarItem>
+              <Link
+                href={`${process.env.REACT_APP_BASE_URL}`}
+                passHref
+                legacyBehavior
+              >
+                <a target="_blank">
+                  New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+                </a>
+              </Link>
             </MenubarItem>
             <MenubarItem
               onClick={() => {
                 console.log(document.URL);
-                
+
                 return;
                 window.open(
                   document.URL,
@@ -135,7 +137,7 @@ export default function Header({
                   toast({
                     title: "Cart cleared!",
                   });
-                  // navigate("/");
+                  router.refresh();
                 }}
                 cancelAction={() => {}}
               >
@@ -148,14 +150,14 @@ export default function Header({
             actionText="Checkout"
             containerClassName="min-h-[20px]"
             actionAction={() => {
-              // navigate("/cart");
+              router.push("/cart");
             }}
             cancelAction={() => {
               // localStorage.removeItem("cart");
               // toast({
               //   title: "Cart cleared!",
               // });
-              // navigate("/");
+              // router.push("/");
             }}
           >
             <div className="text-[18px] font-normal text-[#182132]">
@@ -203,7 +205,13 @@ export default function Header({
           <MenubarTrigger>
             {user.isLoggedIn ? (
               <>
-                <Image className="w-4 text-white lg:w-6" src="/user.png" alt="User icon" width="24" height="24" />
+                <Image
+                  className="w-4 text-white lg:w-6"
+                  src="/user.png"
+                  alt="User icon"
+                  width="24"
+                  height="24"
+                />
                 &nbsp;{user?.name}
               </>
             ) : (

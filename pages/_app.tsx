@@ -6,9 +6,12 @@ import { Header } from "@/ui-core";
 import { UserProvider, ThemeProvider } from "@/contexts";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/ui-core";
+
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
+
   //check whether the page has an individual layout defined
   if (Component.getLayout) {
     return Component.getLayout(
@@ -17,6 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <UserProvider>
             <ThemeProvider>
               <Component {...pageProps} />
+              <Toaster/>
             </ThemeProvider>
           </UserProvider>
         </QueryClientProvider>
@@ -31,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeProvider>
             <Header headingText="Modern Walk" />
             <Component {...pageProps} />
+            <Toaster/>
           </ThemeProvider>
         </UserProvider>
       </QueryClientProvider>
