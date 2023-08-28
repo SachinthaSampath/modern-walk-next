@@ -45,7 +45,7 @@ export async function getStaticProps(context: any) {
   const { productId } = params;
 
   const data = await ProductsAPI.getProduct(params.productId);
-  console.log(data);
+  // console.log(data);
 
   //not found products - send not found status
   if (!data.id) {

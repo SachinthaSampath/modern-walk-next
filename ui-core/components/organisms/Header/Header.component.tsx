@@ -139,7 +139,7 @@ export default function Header({
                   toast({
                     title: "Cart cleared!",
                   });
-                  router.refresh();
+                  router.push("/");
                 }}
                 cancelAction={() => {}}
               >
@@ -249,7 +249,9 @@ export default function Header({
       <div className="flex justify-between px-3 py-4">
         <div className="flex h-10 w-full justify-center overflow-hidden">
           <div className="text-center text-3xl font-bold ">
-            <H1>{headingText}</H1>
+            <Link href="/">
+              <H1>{headingText}</H1>
+            </Link>
           </div>
         </div>
       </div>

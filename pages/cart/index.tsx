@@ -27,9 +27,9 @@ const CartPage = () => {
   //   },[]);
 
   //get the cart from local storage
+  let cart: { id: number; qty: number; data: Item }[] = [];
   if (typeof window !== "undefined") {
     let cartRow = localStorage.getItem("cart");
-    let cart: { id: number; qty: number; data: Item }[] = [];
     if (cartRow) {
       cart = JSON.parse(cartRow);
     }
@@ -54,7 +54,7 @@ const CartPage = () => {
                 </TableHeader>
                 <TableBody>
                   {cart.map((item) => {
-                    console.log(item);
+                    // console.log(item);
                     return (
                       <TableRow key={item.id}>
                         <TableCell className="font-medium">{item.id}</TableCell>

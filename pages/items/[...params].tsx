@@ -23,7 +23,7 @@ const Item = ({ item }: { item: Item }) => {
 export default Item;
 
 export async function getServerSideProps(context:any) {
-  console.log("sever side console log");
+  // console.log("sever side console log");
 
   const { params, req, res } = context;
 

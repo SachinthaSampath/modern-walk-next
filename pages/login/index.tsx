@@ -3,7 +3,6 @@ import React from "react";
 import { useUserContext } from "@/contexts";
 import { UsersAPI } from "@/services";
 import Link from "next/link";
-import { LoginPageProps } from "./LoginPageProps";
 import { useMutation } from "@tanstack/react-query";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +21,8 @@ import { Input } from "@/ui-core";
 import { EyeClosedIcon } from "@radix-ui/react-icons";
 import { EyeSlashIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
+
+type LoginPageProps = {};
 
 //define schema for the form
 const loginSchema = z.object({
@@ -85,7 +86,7 @@ const LoginPage = (): React.JSX.Element => {
             localStorage.setItem("user", JSON.stringify(valid_user));
           }
 
-            router.push({pathname:"/store1",});
+            router.push({pathname:"/",});
         }
       } else {
         //login fail
@@ -115,7 +116,7 @@ const LoginPage = (): React.JSX.Element => {
   function onSubmit(values: z.infer<typeof loginSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // console.log(values);
 
     //call react query mutation with parameters
     loginUserMutation.mutate({

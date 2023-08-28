@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { createUser } from "@/services/user.service";
 import Link from "next/link";
-import { SignUpPageProps } from "./SignUpPageProps";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { UsersAPI } from "@/services";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,6 +27,8 @@ import { Input } from "@/ui-core";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+
+type  SignUpPageProps = {};
 
 const formSchema = z
   .object({
@@ -90,7 +91,7 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    // console.log(values);
 
     //send valid data to mutation
     signUpUserMutation.mutate({
@@ -157,29 +158,30 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
 
   return (
     <div className="flex h-screen  items-center">
-      
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto space-y-4 rounded-xl p-6 shadow-lg md:w-1/2 xl:w-1/3 "
         >
-          <p className="my-4 flex justify-center
-           space-x-[16px]">
-              <Button
-                variant={"link"}
-                type="button"
-                className="w-[200px]"
-                onClick={async () => {
-                  // const { user } = await signInWithGooglePopup();
-                  const { user } = await signInWithGooglePopup();
-                  console.log(user);
-                  const userDocRef = createUserDocumentFromAuth(user);
-                  console.log(userDocRef);
-                }}
-              >
-                SignUp with Google
-              </Button>
-            </p>
+          <p
+            className="my-4 flex justify-center
+           space-x-[16px]"
+          >
+            <Button
+              variant={"link"}
+              type="button"
+              className="w-[200px]"
+              onClick={async () => {
+                // const { user } = await signInWithGooglePopup();
+                const { user } = await signInWithGooglePopup();
+                // console.log(user);
+                const userDocRef = createUserDocumentFromAuth(user);
+                // console.log(userDocRef);
+              }}
+            >
+              SignUp with Google
+            </Button>
+          </p>
           <FormField
             control={form.control}
             name="name"
@@ -291,13 +293,11 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
                 SignUp
               </Button>
             </p>
-
-            
           </div>
         </form>
       </Form>
     </div>
   );
 };
- 
+
 export default SignUpPage;

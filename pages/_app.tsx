@@ -8,20 +8,11 @@ import { UserProvider, ThemeProvider } from "@/contexts";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/ui-core";
-import Store1Layout from "@/ui-core/layouts/PageLayouts/Store1Layout";
-import Store2Layout from "@/ui-core/layouts/PageLayouts/Store2Layout";
 import { useRouter } from "next/router";
 
 const queryClient = new QueryClient();
 
-const layout = {
-  store1: Store1Layout,
-  store2: Store2Layout,
-};
-
 export default function App({ Component, pageProps }: AppProps) {
-  const TenantLayout =
-    (layout[pageProps.tenant] as React.ReactNode) ?? React.Fragment;
   const router = useRouter();
 
   //check whether the page has an individual layout defined
@@ -36,13 +27,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <UserProvider>
           <ThemeProvider>
-            <TenantLayout>
-              <ComponentLayout>
-                <HeaderLayout />
-                <Component {...pageProps} />
-                <Toaster />
-              </ComponentLayout>
-            </TenantLayout>
+            <ComponentLayout>
+              <HeaderLayout />
+              <Component {...pageProps} />
+              <Toaster />
+            </ComponentLayout>
           </ThemeProvider>
         </UserProvider>
       </QueryClientProvider>
@@ -58,9 +47,6 @@ App.getInitialProps = async ({
   Component: any;
   ctx: NextPageContext;
 }) => {
-  //appending the tenant to the context.request object
-  const tenant = ctx?.pathname.match(/^\/([^/]+)/)[1]; 
-
   let pageProps = {};
 
   if (Component.getInitialProps) {
@@ -68,6 +54,6 @@ App.getInitialProps = async ({
   }
 
   return {
-    pageProps: { ...pageProps, tenant },
+    pageProps: { ...pageProps },
   };
 };
