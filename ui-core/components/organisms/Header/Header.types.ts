@@ -1,4 +1,4 @@
 export type HeaderProps = {
-    headingText: string;
+    headingText?: string;
   };
   

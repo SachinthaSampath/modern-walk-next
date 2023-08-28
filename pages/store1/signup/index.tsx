@@ -299,8 +299,5 @@ const SignUpPage: React.FC<SignUpPageProps> = (): React.JSX.Element => {
     </div>
   );
 };
-
-SignUpPage.getLayout=function PageLay(page:any) {
-  return <>{page}</>;
-};
+ 
 export default SignUpPage;

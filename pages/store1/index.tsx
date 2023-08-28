@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Modern Walk</title>
+        <title>Modern Walk Store 1</title>
         <meta
           name="description"
           content="This project is created as part of the full stack internship program offered by WireApps"

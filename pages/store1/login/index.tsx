@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useUserContext } from "@/contexts";
 import { UsersAPI } from "@/services";
@@ -84,7 +85,7 @@ const LoginPage = (): React.JSX.Element => {
             localStorage.setItem("user", JSON.stringify(valid_user));
           }
 
-          router.push("/");
+            router.push({pathname:"/store1",});
         }
       } else {
         //login fail
@@ -234,11 +235,6 @@ const LoginPage = (): React.JSX.Element => {
       </div>
     </>
   );
-};
-
-//set custom layout for the login page. (Remove the common header in other pages).
-LoginPage.getLayout = function PageLayout(page:any) {
-  return <>{page}</>;
 };
 
 export default LoginPage;

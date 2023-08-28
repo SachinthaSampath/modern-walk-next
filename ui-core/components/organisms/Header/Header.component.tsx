@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 
 import { H1 } from "../../atoms";
@@ -23,13 +23,15 @@ import { ShoppingCartIcon } from "lucide-react";
 import { useToast } from "@/ui-core";
 import { Item } from "@/types";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 
 export default function Header({
   headingText,
 }: HeaderProps): React.JSX.Element {
   const { user } = useUserContext();
-
+  if (!headingText) {
+    headingText = "Modern Walk";
+  }
   // const navigate = useNavigate();
   const { toast } = useToast();
   const router = useRouter();
@@ -246,12 +248,9 @@ export default function Header({
       </Menubar>
       <div className="flex justify-between px-3 py-4">
         <div className="flex h-10 w-full justify-center overflow-hidden">
-          <Link
-            className="text-center text-3xl font-bold transition-all hover:text-4xl "
-            href="/"
-          >
+          <div className="text-center text-3xl font-bold ">
             <H1>{headingText}</H1>
-          </Link>
+          </div>
         </div>
       </div>
     </>
